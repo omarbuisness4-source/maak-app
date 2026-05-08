@@ -7,17 +7,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 # تحديث النسخة
+
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # تحديث النسخة
         with:
-          node-version: 18
+          node-version: 20 # استخدام نسخة أحدث عشان التحذير اللي ظهر
+
       - name: Setup Expo
         uses: expo/expo-github-action@v8
         with:
           eas-version: latest
           token: ${{ secrets.EXPO_TOKEN }}
+
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps # أمر يحل تعارض المكتبات
+
       - name: Build APK
         run: npx eas-cli build -p android --profile preview --non-interactive
