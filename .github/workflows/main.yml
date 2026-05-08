@@ -7,12 +7,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4 # تحديث النسخة
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v4 # تحديث النسخة
+        uses: actions/setup-node@v4
         with:
-          node-version: 20 # استخدام نسخة أحدث عشان التحذير اللي ظهر
+          node-version: 20
+          cache: '' # هنا بنقول له متستخدمش الـ Cache اللي فيه مشكلة
 
       - name: Setup Expo
         uses: expo/expo-github-action@v8
@@ -21,7 +22,7 @@ jobs:
           token: ${{ secrets.EXPO_TOKEN }}
 
       - name: Install dependencies
-        run: npm install --legacy-peer-deps # أمر يحل تعارض المكتبات
+        run: npm install
 
       - name: Build APK
-        run: npx eas-cli build -p android --profile preview --non-interactive
+        run: npx eas-cli build --platform android --profile preview --non-interactive --local
