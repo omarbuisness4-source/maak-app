@@ -4,28 +4,16 @@
     "slug": "maak",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/icon.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#0a9396"
+    "userInterfaceStyle": "light",
+    "ios": {
+      "supportsTablet": true
     },
     "android": {
-      "package": "com.maak.app",
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#0a9396"
-      }
+      "package": "com.maak.app"
     },
     "extra": {
       "eas": {
         "projectId": "33c0c592-4780-4242-af78-d936c79e44ca"
-      }
-    },
-    "ios": {
-      "bundleIdentifier": "com.maak.app",
-      "infoPlist": {
-        "ITSAppUsesNonExemptEncryption": false
       }
     }
   }
