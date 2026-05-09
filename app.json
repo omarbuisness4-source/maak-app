@@ -1,20 +1,31 @@
 {
   "expo": {
-    "name": "معاك",
+    "name": "maak",
     "slug": "maak",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./icon.png",
     "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "package": "com.maak.app"
+      "adaptiveIcon": {
+        "foregroundImage": "./adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.omarmaro2.maak"
     },
-    "extra": {
-      "eas": {
-        "projectId": "33c0c592-4780-4242-af78-d936c79e44ca"
-      }
+    "web": {
+      "favicon": "./favicon.png"
     }
   }
 }
