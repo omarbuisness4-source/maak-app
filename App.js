@@ -1,35 +1,42 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import 'react-native-gesture-handler'; // حل مشكلة الـ Missing Peer Dependency
 
-// شاشات بسيطة جوه نفس الملف عشان نتخطى خطأ الـ "Module not found"
-const HomeScreen = () => (
-  <View style={styles.container}><Text style={styles.text}>مرحباً بك في معاك (Home)</Text></View>
-);
-const ChatScreen = () => (
-  <View style={styles.container}><Text style={styles.text}>شاشة الدردشة</Text></View>
-);
-const MedListScreen = () => (
-  <View style={styles.container}><Text style={styles.text}>قائمة الأدوية</Text></View>
-);
+// استدعاء السياق (Context)
+import { AccessibilityProvider } from './context/AccessibilityContext';
+import { MedicinesProvider } from './context/MedicinesContext';
+
+// استدعاء جميع الشاشات من فولدر screens
+import HomeScreen from './screens/HomeScreen';
+import AddMedicineScreen from './screens/AddMedicineScreen';
+import BalanceExercises from './screens/BalanceExercises';
+import ChatScreen from './screens/ChatScreen';
+import DailyMovement from './screens/DailyMovement';
+import HomeSafety from './screens/HomeSafety';
+import MedListScreen from './screens/MedListScreen';
+import MemoryHub from './screens/MemoryHub';
+import RoutineScreen from './screens/RoutineScreen';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: true }}>
-        <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'الرئيسية' }} />
-        <Stack.Screen name="Chat" component={ChatScreen} options={{ title: 'الدردشة' }} />
-        <Stack.Screen name="MedList" component={MedListScreen} options={{ title: 'الأدوية' }} />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <MedicinesProvider>
+      <AccessibilityProvider>
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Home">
+            <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'الرئيسية' }} />
+            <Stack.Screen name="AddMedicine" component={AddMedicineScreen} options={{ title: 'إضافة دواء' }} />
+            <Stack.Screen name="Balance" component={BalanceExercises} options={{ title: 'تمارين التوازن' }} />
+            <Stack.Screen name="Chat" component={ChatScreen} options={{ title: 'المساعد الذكي' }} />
+            <Stack.Screen name="DailyMovement" component={DailyMovement} options={{ title: 'الحركة اليومية' }} />
+            <Stack.Screen name="HomeSafety" component={HomeSafety} options={{ title: 'سلامة المنزل' }} />
+            <Stack.Screen name="MedList" component={MedListScreen} options={{ title: 'قائمة الأدوية' }} />
+            <Stack.Screen name="MemoryHub" component={MemoryHub} options={{ title: 'مركز الذاكرة' }} />
+            <Stack.Screen name="Routine" component={RoutineScreen} options={{ title: 'الروتين اليومي' }} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </AccessibilityProvider>
+    </MedicinesProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: '#0a9396' },
-  text: { color: 'white', fontSize: 20, fontWeight: 'bold' }
-});
