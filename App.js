@@ -2,11 +2,11 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// استدعاء السياق (Context) - تم تعديل المسارات لتكون دقيقة جداً
+// استدعاء السياق (Context) - تم ضبط الحروف لتطابق الصورة
 import { AccessibilityProvider } from './context/AccessibilityContext'; 
 import { MedicinesProvider } from './context/MedicinesContext';
 
-// استدعاء الشاشات
+// استدعاء الشاشات من فولدر screens كما تظهر في الصورة
 import HomeScreen from './screens/HomeScreen';
 import AddMedicineScreen from './screens/AddMedicineScreen';
 import BalanceExercises from './screens/BalanceExercises';
@@ -25,7 +25,11 @@ export default function App() {
       <AccessibilityProvider>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'الرئيسية', headerShown: false }} />
+            <Stack.Screen 
+              name="Home" 
+              component={HomeScreen} 
+              options={{ title: 'الرئيسية', headerShown: false }} 
+            />
             <Stack.Screen name="AddMedicine" component={AddMedicineScreen} options={{ title: 'إضافة دواء' }} />
             <Stack.Screen name="Balance" component={BalanceExercises} options={{ title: 'تمارين التوازن' }} />
             <Stack.Screen name="Chat" component={ChatScreen} options={{ title: 'المساعد الذكي' }} />
