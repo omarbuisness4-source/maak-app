@@ -7,7 +7,7 @@ import {
   StyleSheet,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import ChatFloatingButton from "../components/ChatFloatingButton";
+import ChatFloatingButton from "./ChatFloatingButton";
 
 export default function HomeScreen({ navigation }) {
   const [challenge, setChallenge] = useState("memory");
