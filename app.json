@@ -19,13 +19,15 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./Adaptive-icon.png",
+        "foregroundImage": "./adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.omarmaro2.maak"
     },
-    "web": {
-      "favicon": "./favicon.png"
+    "extra": {
+      "eas": {
+        "projectId": "7f702b6c-2ca9-47b2-a234-79997f9c21af"
+      }
     }
   }
 }
