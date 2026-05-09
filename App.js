@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { createNativeStackNavigator } from '@react-navigation/native-stack'; // التعديل هنا
 
 // استدعاء السياق (Context)
 import { AccessibilityProvider } from './context/AccessibilityContext';
 import { MedicinesProvider } from './context/MedicinesContext';
 
-// استدعاء جميع الشاشات من فولدر screens
+// استدعاء الشاشات
 import HomeScreen from './screens/HomeScreen';
 import AddMedicineScreen from './screens/AddMedicineScreen';
 import BalanceExercises from './screens/BalanceExercises';
@@ -17,7 +17,7 @@ import MedListScreen from './screens/MedListScreen';
 import MemoryHub from './screens/MemoryHub';
 import RoutineScreen from './screens/RoutineScreen';
 
-const Stack = createStackNavigator();
+const Stack = createNativeStackNavigator(); // التعديل هنا
 
 export default function App() {
   return (
@@ -25,7 +25,7 @@ export default function App() {
       <AccessibilityProvider>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'الرئيسية' }} />
+            <Stack.Screen name="Home" component={HomeScreen} options={{ title: 'الرئيسية', headerShown: false }} />
             <Stack.Screen name="AddMedicine" component={AddMedicineScreen} options={{ title: 'إضافة دواء' }} />
             <Stack.Screen name="Balance" component={BalanceExercises} options={{ title: 'تمارين التوازن' }} />
             <Stack.Screen name="Chat" component={ChatScreen} options={{ title: 'المساعد الذكي' }} />
