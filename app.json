@@ -22,7 +22,12 @@
         "foregroundImage": "./adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.omarmaro1234.maak"
+      "package": "com.omarmaro2.maak"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "7f4353fd-e9cf-40e0-88b9-4039e16b8830"
+      }
     }
   }
 }
