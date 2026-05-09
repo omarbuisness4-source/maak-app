@@ -6,7 +6,7 @@ export default function HomeScreen({ navigation }) {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>تطبيق مَعك</Text>
-        <Text style={styles.subtitle}>مرحباً بك، نحن هنا لخدمتك</Text>
+        <Text style={styles.subtitle}>نحن هنا لخدمتك</Text>
       </View>
 
       <View style={styles.grid}>
