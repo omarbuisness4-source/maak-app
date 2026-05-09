@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   Alert,
 } from "react-native";
-import { MedicinesContext } from "../context/MedicinesContext";
+import { MedicinesContext } from "./MedicinesContext";
 
 export default function MedListScreen({ navigation }) {
   const { medicines, deleteMedicine, takeDose } =
