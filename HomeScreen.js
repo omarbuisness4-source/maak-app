@@ -6,54 +6,36 @@ export default function HomeScreen({ navigation }) {
     <ScrollView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.title}>تطبيق مَعك</Text>
-        <Text style={styles.subtitle}>نحن هنا لخدمتك</Text>
+        <Text style={styles.subtitle}>مرحباً بك، نحن هنا لخدمتك</Text>
       </View>
 
       <View style={styles.grid}>
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('Balance')}
-        >
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Balance')}>
           <Text style={styles.cardIcon}>🧘</Text>
           <Text style={styles.cardText}>تمارين التوازن</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('MedList')}
-        >
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('MedList')}>
           <Text style={styles.cardIcon}>💊</Text>
           <Text style={styles.cardText}>الأدوية</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('MemoryHub')}
-        >
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('MemoryHub')}>
           <Text style={styles.cardIcon}>🧠</Text>
           <Text style={styles.cardText}>مركز الذاكرة</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('HomeSafety')}
-        >
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('HomeSafety')}>
           <Text style={styles.cardIcon}>🏠</Text>
           <Text style={styles.cardText}>سلامة المنزل</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('DailyMovement')}
-        >
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('DailyMovement')}>
           <Text style={styles.cardIcon}>🚶</Text>
           <Text style={styles.cardText}>الحركة اليومية</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('Routine')}
-        >
+        <TouchableOpacity style={styles.card} onPress={() => navigation.navigate('Routine')}>
           <Text style={styles.cardIcon}>📅</Text>
           <Text style={styles.cardText}>الروتين اليومي</Text>
         </TouchableOpacity>
