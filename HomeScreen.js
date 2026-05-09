@@ -1,82 +1,174 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
+import React, { useState } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
 
 export default function HomeScreen({ navigation }) {
+  const [challenge, setChallenge] = useState("memory");
+
+  const memoryServices = [
+    {
+      title: "إدارة الأدوية",
+      desc: "جرعات – مواعيد – متابعة",
+      emoji: "💊",
+      onPress: () => navigation.navigate("MedList"),
+    },
+    {
+      title: "روتين يومي ثابت",
+      desc: "تنظيم اليوم",
+      emoji: "📅",
+      onPress: () => navigation.navigate("Routine"),
+    },
+    {
+      title: "فيديوهات تنشيط الذاكرة",
+      desc: "محتوى بسيط",
+      emoji: "🎥",
+      onPress: () => navigation.navigate("MemoryHub"),
+    },
+  ];
+
+  const fallServices = [
+    {
+      title: "تمارين توازن",
+      desc: "تقليل السقوط",
+      emoji: "🚶‍♂️",
+      onPress: () => navigation.navigate("BalanceExercises"),
+    },
+    {
+      title: "أمان المنزل",
+      desc: "إرشادات مهمة",
+      emoji: "🏠",
+      onPress: () => navigation.navigate("HomeSafety"),
+    },
+  ];
+
+  const services = challenge === "memory" ? memoryServices : fallServices;
+
   return (
-    <ScrollView style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.title}>تطبيق معاك</Text>
-        <Text style={styles.subtitle}>مرحباً بك، نحن هنا لخدمتك</Text>
-      </View>
+    <LinearGradient colors={["#0a9396", "#005f73"]} style={{ flex: 1 }}>
+      <ScrollView contentContainerStyle={styles.container}>
+        {/* العنوان */}
+        <View style={styles.headerBox}>
+          <Text style={styles.title}>معاك</Text>
+          <Text style={styles.subTitle}>كبار السن</Text>
+        </View>
 
-      <View style={styles.grid}>
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('Balance')}
-        >
-          <Text style={styles.cardIcon}>🧘</Text>
-          <Text style={styles.cardText}>تمارين التوازن</Text>
-        </TouchableOpacity>
+        {/* التحدي */}
+        <Text style={styles.section}>التحدي</Text>
+        <View style={styles.row}>
+          <TouchableOpacity
+            style={[
+              styles.challengeBtn,
+              challenge === "memory" && styles.activeBtn,
+            ]}
+            onPress={() => setChallenge("memory")}
+          >
+            <Text style={styles.challengeText}>🧠 ضعف الذاكرة</Text>
+          </TouchableOpacity>
 
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('MedList')}
-        >
-          <Text style={styles.cardIcon}>💊</Text>
-          <Text style={styles.cardText}>الأدوية</Text>
-        </TouchableOpacity>
+          <TouchableOpacity
+            style={[
+              styles.challengeBtn,
+              challenge === "fall" && styles.activeBtn,
+            ]}
+            onPress={() => setChallenge("fall")}
+          >
+            <Text style={styles.challengeText}>🚶 خطر السقوط</Text>
+          </TouchableOpacity>
+        </View>
 
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('MemoryHub')}
-        >
-          <Text style={styles.cardIcon}>🧠</Text>
-          <Text style={styles.cardText}>مركز الذاكرة</Text>
-        </TouchableOpacity>
+        {/* الخدمات */}
+        <Text style={styles.section}>الخدمات</Text>
 
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('HomeSafety')}
-        >
-          <Text style={styles.cardIcon}>🏠</Text>
-          <Text style={styles.cardText}>سلامة المنزل</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('DailyMovement')}
-        >
-          <Text style={styles.cardIcon}>🚶</Text>
-          <Text style={styles.cardText}>الحركة اليومية</Text>
-        </TouchableOpacity>
-
-        <TouchableOpacity 
-          style={styles.card} 
-          onPress={() => navigation.navigate('Routine')}
-        >
-          <Text style={styles.cardIcon}>📅</Text>
-          <Text style={styles.cardText}>الروتين اليومي</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+        {services.map((item, index) => (
+          <TouchableOpacity
+            key={index}
+            style={styles.card}
+            onPress={item.onPress}
+          >
+            <Text style={styles.cardEmoji}>{item.emoji}</Text>
+            <View>
+              <Text style={styles.cardTitle}>{item.title}</Text>
+              <Text style={styles.cardDesc}>{item.desc}</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </ScrollView>
+    </LinearGradient>
   );
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: '#f5f5f5' },
-  header: { padding: 40, backgroundColor: '#4A90E2', alignItems: 'center' },
-  title: { fontSize: 28, fontWeight: 'bold', color: '#fff' },
-  subtitle: { fontSize: 16, color: '#fff', marginTop: 10 },
-  grid: { flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around', padding: 10 },
-  card: {
-    backgroundColor: '#fff',
-    width: '45%',
+  container: {
     padding: 20,
-    borderRadius: 15,
-    alignItems: 'center',
-    marginVertical: 10,
-    elevation: 3,
+    paddingBottom: 80,
   },
-  cardIcon: { fontSize: 40, marginBottom: 10 },
-  cardText: { fontSize: 16, fontWeight: 'bold', color: '#333' }
+  headerBox: {
+    backgroundColor: "rgba(255,255,255,0.2)",
+    borderRadius: 20,
+    padding: 20,
+    marginBottom: 20,
+    alignItems: "center",
+  },
+  title: {
+    fontSize: 34,
+    color: "#fff",
+    fontWeight: "bold",
+  },
+  subTitle: {
+    fontSize: 22,
+    color: "#e0fbfc",
+  },
+  section: {
+    fontSize: 24,
+    color: "#fff",
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
+  row: {
+    flexDirection: "row",
+    marginBottom: 20,
+  },
+  challengeBtn: {
+    flex: 1,
+    backgroundColor: "rgba(255,255,255,0.25)",
+    padding: 16,
+    borderRadius: 18,
+    marginRight: 10,
+    alignItems: "center",
+  },
+  activeBtn: {
+    backgroundColor: "#ffd166",
+  },
+  challengeText: {
+    fontSize: 20,
+    fontWeight: "bold",
+    color: "#003049",
+  },
+  card: {
+    backgroundColor: "#edf6f9",
+    borderRadius: 18,
+    padding: 18,
+    flexDirection: "row",
+    alignItems: "center",
+    marginBottom: 14,
+  },
+  cardEmoji: {
+    fontSize: 40,
+    marginRight: 16,
+  },
+  cardTitle: {
+    fontSize: 22,
+    fontWeight: "bold",
+    color: "#003049",
+  },
+  cardDesc: {
+    fontSize: 16,
+    color: "#555",
+  },
 });
