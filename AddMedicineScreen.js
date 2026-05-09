@@ -12,7 +12,7 @@ import DateTimePicker from "@react-native-community/datetimepicker";
 import { Ionicons } from "@expo/vector-icons";
 
 // استيراد الـ Context الخاص بالأدوية
-import { MedicinesContext } from "../context/MedicinesContext";
+import { MedicinesContext } from "./MedicinesContext";
 
 export default function AddMedicineScreen({ navigation }) {
   // سحب فانكشن إضافة الدواء من الـ Context
