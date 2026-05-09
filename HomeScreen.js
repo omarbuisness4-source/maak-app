@@ -37,7 +37,8 @@ export default function HomeScreen({ navigation }) {
       title: "تمارين توازن",
       desc: "تقليل السقوط",
       emoji: "🚶‍♂️",
-      onPress: () => navigation.navigate("BalanceExercises"),
+      // تم التعديل هنا ليطابق الاسم في App.js
+      onPress: () => navigation.navigate("Balance"), 
     },
     {
       title: "أمان المنزل",
