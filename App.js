@@ -2,11 +2,9 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-// استدعاء السياق مباشرة من الـ Root
 import { AccessibilityProvider } from './AccessibilityContext'; 
 import { MedicinesProvider } from './MedicinesContext';
 
-// استدعاء الشاشات مباشرة من الـ Root
 import HomeScreen from './HomeScreen';
 import AddMedicineScreen from './AddMedicineScreen';
 import BalanceExercises from './BalanceExercises';
@@ -24,18 +22,14 @@ export default function App() {
       <AccessibilityProvider>
         <NavigationContainer>
           <Stack.Navigator initialRouteName="Home">
-            <Stack.Screen 
-              name="Home" 
-              component={HomeScreen} 
-              options={{ title: 'الرئيسية', headerShown: false }} 
-            />
-            <Stack.Screen name="AddMedicine" component={AddMedicineScreen} options={{ title: 'إضافة دواء' }} />
-            <Stack.Screen name="Balance" component={BalanceExercises} options={{ title: 'تمارين التوازن' }} />
-            <Stack.Screen name="DailyMovement" component={DailyMovement} options={{ title: 'الحركة اليومية' }} />
-            <Stack.Screen name="HomeSafety" component={HomeSafety} options={{ title: 'سلامة المنزل' }} />
-            <Stack.Screen name="MedList" component={MedListScreen} options={{ title: 'قائمة الأدوية' }} />
-            <Stack.Screen name="MemoryHub" component={MemoryHub} options={{ title: 'مركز الذاكرة' }} />
-            <Stack.Screen name="Routine" component={RoutineScreen} options={{ title: 'الروتين اليومي' }} />
+            <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+            <Stack.Screen name="AddMedicine" component={AddMedicineScreen} />
+            <Stack.Screen name="Balance" component={BalanceExercises} />
+            <Stack.Screen name="DailyMovement" component={DailyMovement} />
+            <Stack.Screen name="HomeSafety" component={HomeSafety} />
+            <Stack.Screen name="MedList" component={MedListScreen} />
+            <Stack.Screen name="MemoryHub" component={MemoryHub} />
+            <Stack.Screen name="Routine" component={RoutineScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       </AccessibilityProvider>
