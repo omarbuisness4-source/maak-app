@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./adaptive-icon.png",
+        "foregroundImage": "./Adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.omarmaro2.maak"
